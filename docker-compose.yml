@@ -1,0 +1,24 @@
+version: "3"
+services:
+  backend:
+    build: backend
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - MYSQL_USER=backend
+      - MYSQL_HOST=db
+      - MYSQL_DATABASE=tutorials
+      - MYSQL_PASSWORD=acit4640
+  frontend:
+    build: frontend
+    restart: always
+    ports:
+      - 12080:80
+    environment:
+      API_PROXY_PASS: backend
+  db:
+    image: mysql
+    restart: always
+    env_file:
+      - .env
