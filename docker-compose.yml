@@ -6,15 +6,15 @@ services:
     depends_on:
       - db
     environment:
-      - MYSQL_USER=backend
-      - MYSQL_HOST=db
-      - MYSQL_DATABASE=tutorials
-      - MYSQL_PASSWORD=acit4640
+      - MYSQL_USER=
+      - MYSQL_HOST=
+      - MYSQL_DATABASE=
+      - MYSQL_PASSWORD=
   frontend:
     build: frontend
     restart: always
     ports:
-      - 12080:80
+      - 80:80
     environment:
       API_PROXY_PASS: backend
   db:
