@@ -16,3 +16,5 @@ FROM nginx
 ENV NGINX_ENVSUBST_TEMPLATE_DIR /frontend/app
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /frontend/app /frontend/app
+RUN apt-get update -y
+RUN apt-get install certbot python3-certbot-nginx -y
